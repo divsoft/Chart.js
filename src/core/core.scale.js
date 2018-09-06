@@ -660,8 +660,9 @@ module.exports = Element.extend({
 			tick = ticks[i];
 
 			// Since we always show the last tick,we need may need to hide the last shown one before
-			shouldSkip = (skipRatio > 1 && i % skipRatio > 0) || (i % skipRatio === 0 && i + skipRatio >= tickCount);
-			if (shouldSkip && i !== tickCount - 1) {
+			shouldSkip = skipRatio > 1 && i%skipRatio!==0;
+
+			if (shouldSkip) {
 				// leave tick in place but make sure it's not displayed (#4635)
 				delete tick.label;
 			}
